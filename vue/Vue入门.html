@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">{{msg}}{{content}}</div>
+    <script>
+        new Vue({
+          el: '#root',
+          data: {
+            msg: 'hello ',
+            content: 'Vue'
+          }
+        })
+    </script>
+
+    <!--挂载点，模板，实力之间的关系-->
+    <div id="mount"></div>
+    <script>
+        new Vue({
+          el: '#mount',
+          template: '<h1>挂载点：与vue实例绑定的元素容器 就是挂载点；{{msg}}</h1>',
+          data: {
+            msg: '挂载点中的元素都是模板'
+          }
+        })
+    </script>
+
+    <!--数据，事件和方法-->
+    <div id="event">
+        <div v-text="content"></div>
+        <div v-html="content"></div>
+        <div v-on:click="change">{{msg}}</div>
+    </div>
+    <script>
+        new Vue({
+          el: '#event',
+          data: {
+            content: '<h2>v-text与v-html指令区别：是否将变量内容转义</h2>',
+            msg: '点击我将改变内容'
+          },
+          methods: {
+            change:()=>{
+              this.msg = '改变后的内容'
+             }
+          }
+        })
+    </script>
+
+</body>
+</html>
